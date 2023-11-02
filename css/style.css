@@ -1,4 +1,5 @@
 /* GENERAL SETTINGS */
+
 :root{
   --color-white: #ffffff;
   --color-dark-text: #161012;
@@ -29,4 +30,12 @@ body{
 
 .header{
   background-color: var(--color-headers);
+}
+
+.notifications{
+  background-color: var(--color-notification);
+}
+
+.chat{
+  background-image: url(../img/mine.jpg);
 }
