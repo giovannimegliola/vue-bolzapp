@@ -39,3 +39,23 @@ body{
 .chat{
   background-image: url(../img/mine.jpg);
 }
+
+.avatar{
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.icon li{
+  list-style: none;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.icon a{
+  margin-left: 10px;
+  color: var(--color-text-grey);
+}
+
+
+
