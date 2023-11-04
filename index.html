@@ -16,83 +16,102 @@
 <body>
 
   <div id="app">
+    <div class="container">
 
-    <div class="container h-100">
-
-      <div class="row h-100 flex-nowrap">
-
-        <div class="col-12 col-md-4 contacts">
-          <div class="row h-100 flex-column flex-nowrap">
-
-            <div class="col-12 header">
-              <div class="col-6 user_contact mt-1 mb-1 ">
-                <img src="img/avatar_io.jpg" alt="avatar_1" class="avatar">
-                <span class=" ms-2">Sofia</span>
+      <!-- left-sidebar -->
+      <div class="row flex-nowrap h-100">
+        <div class="col-12 col-md-4">
+          <div class="row h-100 flex-column">
+            <div class="col-12 col-header border-end d-flex align-items-center justify-content-between">
+              <div class="py-2">
+                <img src="./img/avatar_io.jpg" alt="profile pic" class="avatar">
+                <strong class="ms-2">Sofia</strong>
               </div>
-              <div class="col-6 mt-1 mb-1">
-                <ul class="icon">
-                    <li><a href="#"><i class="fa-solid fa-circle-notch"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-message"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a></li>
-                </ul>
-             </div>
-            </div>
-            
-            <div class="col-12 notifications">
-              <div class="col-2 ">
-                <i class="fa-solid fa-bell-slash "></i>
-              </div>
-              <div class="col-10 text_alert">
-                <span>Ricevi notifiche di nuovi messaggi</span>
-                <a a href="#"><p>Attiva notifiche desktop</p></a> 
+              <div class="icons">
+                <i class="fa-solid fa-circle-notch me-3"></i>
+                <i class="fa-solid fa-message me-3"></i>
+                <i class="fa-solid fa-ellipsis-vertical "></i>                
               </div>
             </div>
+            <div class="col-12 d-flex notification py-2">
+              <div class="d-flex align-items-center justify-content-center ">
+                <i class="fa-solid fa-bell-slash"></i>
+              </div>
+              <div class="ms-2">
+                <strong>Ricevi notifiche di nuovi messaggi</strong><br>
+                <small> <a href="#">Attiva notifiche desktop</a></small>
+              </div>
 
-            <div class="col-12">              
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="search" placeholder="Cerca o inizia una nuova chat">
+            </div>
+            <div class="col-12 py-2" id="search">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model="searchText">
+              </div>
             </div>
 
-            <div class="col-12 flex-grow-1 overflow-y-auto">
-              lista chat
+            <!-- contacts list -->
+            <div class="col-12 flex-grow-1 overflow-y-auto h0">
+              <div class="row">
+                <div class="col-12 py-2 contact d-flex justify-content-between" :class="{'active': index === activeContactIndex}" v-for = "(contact,index) in contacts" :key="contact.id">
+                  <div class="d-flex">
+                    <img :src="contact.avatar" :alt="contact.name" class="avatar">
+                    <div class="ms-2">
+                      <strong>{{contact.name}}</strong><br>
+                      <small>{{contact.messages[contact.messages.length -1].message}}</small>
+                    </div>
+                  </div>
+                  <div>
+                    <small>{{contact.messages[contact.messages.length -1].date}}</small>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!-- end left-sidebar -->
 
-        <div class="col-12 col-md-8">
+        <!--chat box on the right-->
+        <div class="col-12 col-md-8 chat-box">
           <div class="row h-100 flex-column flex-nowrap">
-            <div class="col-12 header">
-              Michele
+            <div class="col-12 col-header d-flex align-items-center justify-content-between py-2 ">
+              <div class="d-flex">
+                <img src="img/avatar_1.jpg" alt="activeContact.name" class="avatar">
+                <div class="ms-2">
+                  <strong>name</strong><br>
+                  <small>ultimo accesso alle ???</small>
+                </div>
+              </div>
+              <div class="icons">
+                <i class="fa-solid fa-arrow-left me-3" style="cursor: pointer;"></i>
+                <i class="fa-solid fa-magnifying-glass me-3"></i>
+                <i class="fa-solid fa-link me-3"></i>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </div>
             </div>
-            <div class="col-12 chat">
-              chat
+            <div class="col-12 flex-grow-1 overflow-y-auto h0">
+              <div class="d-flex py-3">
+                <div class="msg sent">ciaooo</div>
+              </div>
+              <div class="d-flex py-3">
+                <div class="msg received">ciao</div>
+              </div>
             </div>
-            <div class="col-12 header">
-              Scrivi un messaggio
+            <div class="col-12 col-header py-2 d-flex align-items-center">
+              <i class="fa-regular fa-face-smile me-3" style="cursor: pointer;"></i>
+              <input type="text" class="form-control me-3" placeholder="Scrivi un messaggio" v-model="message">
+              <i class="fa-regular fa-paper-plane me-3" style="cursor: pointer;"></i>
+              <i class="fa-solid fa-microphone " style="cursor: pointer;"></i>
             </div>
-
-
-            
           </div>
         </div>
-          
-
-        </div>
-
       </div>
-      
-
-
-
-
-
-
     </div>
-
   </div>
+ <!--end chatbox-->
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/script.js" type="module"></script>
   
 </body>
 </html>

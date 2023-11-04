@@ -1,4 +1,3 @@
-/* GENERAL SETTINGS */
 
 :root{
   --color-white: #ffffff;
@@ -6,12 +5,11 @@
   --color-dark-grey: #6b7376;
   --color-text-grey: #b6bbc1;
   --color-headers: #eaeaea;
-  --color-contact-hover: #e9ebeb;
+  --color-contact-active: #e9ebeb;
   --color-light-icons: #b1b1b1;
   --color-sent-message: #d5f9ba;
   --color-notification: #8edafc;
-  --background: linear-gradient(0deg, #dadcdc 85%, #00a884 85%);
-
+  --background: linear-gradient(180deg, #009688 18.55%, #D9DBD5 18.56%);
 }
 
 body{
@@ -21,41 +19,92 @@ body{
 #app{
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   background-image:var(--background);
+  padding: 20px;
 }
 
-.contacts{
- background-color: var(--color-white);
+#app .container {
+  height: 100%;
+  background-color: var(--color-white);
 }
 
-.header{
+.chat-box{
+  background-image: url('../img/mine.jpg');
+}
+
+.col-header{
   background-color: var(--color-headers);
 }
 
-.notifications{
-  background-color: var(--color-notification);
-}
-
-.chat{
-  background-image: url(../img/mine.jpg);
+.h0{
+  height: 0;
 }
 
 .avatar{
+  width: 50px;
   height: 50px;
-  border-radius: 50%;
-  display: inline-block;
+  border-radius: 100%;
 }
 
-.icon li{
-  list-style: none;
-  display: inline-block;
-  text-decoration: none;
+.contact{
+  border-bottom: 1px solid var(--color-headers);
 }
 
-.icon a{
-  margin-left: 10px;
+.contact:hover{
+  background-color: var(--color-headers);
+  cursor: pointer;
+}
+
+.contact.active{
+  background-color: var(--color-contact-active);
+}
+
+.icons{
+  color: var(--color-light-icons);
+} 
+
+.notification{
+  background-color: var(--color-notification);
+}
+
+.notification div:first-child{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: var(--color-white);
+  color: var(--color-notification);
+}
+
+.msg{
+  padding: 10px 20px;
+  border-radius: 10px; 
+}
+
+.sent{
+  margin-left: auto;
+  background-color: var(--color-sent-message);
+}
+
+.received{
+  margin-right: auto;
+  background-color: var(--color-white);
+}
+
+small{
   color: var(--color-text-grey);
 }
 
+small a {
+  color: var(--color-dark-grey);
+}
 
+#search .input-group-text{
+  color: var(--color-text-grey);
+  background-color: var(--color-white);
+  border-right: none;
+}
 
+#search .form-control{
+  border-left: none;
+}
