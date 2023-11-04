@@ -15,6 +15,7 @@ createApp({
   },
   methods:{
     selectContact(id){
+      this.activeContactIndex = this.contacts.findIndex((contact)=> contact.id === id);
 
     }
   },

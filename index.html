@@ -53,7 +53,7 @@
             <!-- contacts list -->
             <div class="col-12 flex-grow-1 overflow-y-auto h0">
               <div class="row">
-                <div class="col-12 py-2 contact d-flex justify-content-between" :class="{'active': index === activeContactIndex}" v-for = "(contact,index) in contacts" :key="contact.id">
+                <div class="col-12 py-2 contact d-flex justify-content-between" :class="{'active': index === activeContactIndex}" v-for = "(contact,index) in contacts" :key="contact.id" @click="selectContact(contact.id)">
                   <div class="d-flex">
                     <img :src="contact.avatar" :alt="contact.name" class="avatar">
                     <div class="ms-2">
@@ -76,10 +76,10 @@
           <div class="row h-100 flex-column flex-nowrap">
             <div class="col-12 col-header d-flex align-items-center justify-content-between py-2 ">
               <div class="d-flex">
-                <img src="img/avatar_1.jpg" alt="activeContact.name" class="avatar">
+                <img :src="contacts[activeContactIndex].avatar" :alt="contacts[activeContactIndex].name" class="avatar">
                 <div class="ms-2">
-                  <strong>name</strong><br>
-                  <small>ultimo accesso alle ???</small>
+                  <strong>{{contacts[activeContactIndex].name}}</strong><br>
+                  <small>ultimo accesso {{contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length -1].date}}</small>
                 </div>
               </div>
               <div class="icons">
@@ -90,11 +90,8 @@
               </div>
             </div>
             <div class="col-12 flex-grow-1 overflow-y-auto h0">
-              <div class="d-flex py-3">
-                <div class="msg sent">ciaooo</div>
-              </div>
-              <div class="d-flex py-3">
-                <div class="msg received">ciao</div>
+              <div class="d-flex py-3" v-for=" (msg, index) in contacts[activeContactIndex].messages" :key="index">
+                <div class="msg" :class="msg.status">{{msg.message}}</div>
               </div>
             </div>
             <div class="col-12 col-header py-2 d-flex align-items-center">
