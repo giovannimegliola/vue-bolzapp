@@ -1,3 +1,6 @@
+const dt = luxon.DateTime;
+
+
 import {contactList} from './data.js'
 
 
@@ -41,7 +44,7 @@ createApp({
     },
     newMessage(){
       const newmsg = {
-        date: new Date(),
+        date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
         message: this.message,
         status: 'sent'
       }
@@ -49,7 +52,7 @@ createApp({
       this.message = '';
       setTimeout(()=>{
         const newmsg = {
-          date: new Date(),
+          date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
           message: this.answer,
           status: 'received'
         }

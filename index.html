@@ -79,7 +79,7 @@
                 <img :src="activeContact.avatar" :alt="activeContact.name" class="avatar">
                 <div class="ms-2">
                   <strong>{{activeContact.name}}</strong><br>
-                  <small>Ultimo accesso{{lastDate}}</small>
+                  <small>Ultimo accesso {{lastDate}}</small>
                 </div>
               </div>
               <div class="icons">
@@ -107,6 +107,8 @@
   </div>
  <!--end chatbox-->
 
+
+ <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="js/script.js" type="module"></script>
   
