@@ -73,6 +73,11 @@ createApp({
       } else {
         return 'sconosciuto';
       }  
+    },
+    filteredContacts() {
+      return this.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(this.searchText.toLowerCase())
+      );
     }
   }
 }).mount('#app');
