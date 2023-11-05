@@ -111,9 +111,8 @@ small a {
 
 .delete-menu {
   cursor: pointer;
-  border: 1px solid gray;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 0 auto;
+  color: var(--color-dark-grey);
 }
 
 .arrow-icon {
