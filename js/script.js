@@ -1,22 +1,34 @@
 const dt = luxon.DateTime;
 
+const answers = [
+  "Provo a chiamare e ti aggiorno",
+  "Va bene!",
+  "Se il buongiorno si vede dal mattino...",
+  "Mi sembra un'ottima idea",
+  "Mi dispiace, non so come aiutarti",
+  "Giusto, non ci avevo pensato!",
+  "Non preoccuparti, ci penso io",
+  "Ti tengo aggiornato",
+  "Mandami il suo contatto telefonico",
+  "Sempre un piacere!",
+  "Che ne dici se ordiniamo una pizza?",
+  "Non posso, sarà per la prossima volta"
+];
 
 import {contactList} from './data.js'
 
-
 const {createApp} = Vue;
 
- 
 createApp({
   data (){
     return {
       contacts: contactList,
       activeContactIndex: 0,
       searchText: '',
-      message: '',
-      answer: 'ok'
+      message: ''
     }
   },
+
   methods:{
     selectContact(id){
       const index = this.contacts.findIndex ((contact)=> contact.id === id);
@@ -43,6 +55,8 @@ createApp({
       }
     },
     newMessage(){
+      const randomIndex = Math.floor(Math.random() * answers.length);
+      const randomAnswer = answers[randomIndex];
       const newmsg = {
         date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
         message: this.message,
@@ -51,22 +65,22 @@ createApp({
       this.activeContact.messages.push(newmsg);
       this.message = '';
       setTimeout(()=>{
-        const newmsg = {
+        const answerMessage = {
           date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
-          message: this.answer,
+          message: randomAnswer,
           status: 'received'
         }
-        this.activeContact.messages.push(newmsg);
+        this.activeContact.messages.push(answerMessage);
       }, 1000)
     },
     toggleDeleteMenu(contact, msg) {
       msg.showDeleteMenu = !msg.showDeleteMenu;
     },
-  
     deleteMessage(contact, msgIndex) {
       contact.messages.splice(msgIndex, 1);
     }
   },
+
   computed:{
     activeContact(){
       return this.contacts[this.activeContactIndex];
