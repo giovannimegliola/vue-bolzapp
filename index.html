@@ -91,7 +91,12 @@
             </div>
             <div class="col-12 flex-grow-1 overflow-y-auto h0">
               <div class="d-flex py-3" v-for=" (msg, index) in activeContact.messages" :key="index">
-                <div class="msg" :class="msg.status">{{msg.message}}</div>
+                <div class="msg" :class="msg.status" @click="toggleDeleteMenu(activeContact, msg)">{{msg.message}}
+                  <i class="fa-solid fa-angle-down arrow-icon" ></i>
+                  <div class="delete-menu" v-if="msg.showDeleteMenu">
+                    <div @click="deleteMessage(activeContact, index)">Cancella messaggio</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-12 col-header py-2 d-flex align-items-center">

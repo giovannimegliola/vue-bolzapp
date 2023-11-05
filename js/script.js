@@ -57,9 +57,14 @@ createApp({
           status: 'received'
         }
         this.activeContact.messages.push(newmsg);
-
-
       }, 1000)
+    },
+    toggleDeleteMenu(contact, msg) {
+      msg.showDeleteMenu = !msg.showDeleteMenu;
+    },
+  
+    deleteMessage(contact, msgIndex) {
+      contact.messages.splice(msgIndex, 1);
     }
   },
   computed:{

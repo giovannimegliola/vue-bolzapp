@@ -108,3 +108,20 @@ small a {
 #search .form-control{
   border-left: none;
 }
+
+.delete-menu {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.arrow-icon {
+  display: none;
+  cursor: pointer;
+  color: var(--color-text-grey);
+}
+
+.msg:hover .arrow-icon {
+  display: inline-block;
+}
