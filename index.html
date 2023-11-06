@@ -103,7 +103,7 @@
             <div class="col-12 col-header py-2 d-flex align-items-center">
               <i class="fa-regular fa-face-smile me-3" style="cursor: pointer;"></i>
               <input type="text" class="form-control me-3" placeholder="Scrivi un messaggio" v-model="message" @keyup.enter = "newMessage">
-              <i class="fa-regular fa-paper-plane me-3" style="cursor: pointer;"></i>
+              <i class="fa-regular fa-paper-plane me-3" style="cursor: pointer;" @click="newMessage"></i>
               <i class="fa-solid fa-microphone " style="cursor: pointer;"></i>
             </div>
           </div>
