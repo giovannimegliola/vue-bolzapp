@@ -20,7 +20,7 @@
 
       <!-- left-sidebar -->
       <div class="row flex-nowrap h-100">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 d-md-block" :class="{'d-none': showChat}">
           <div class="row h-100 flex-column">
             <div class="col-12 col-header border-end d-flex align-items-center justify-content-between">
               <div class="py-2">
@@ -41,7 +41,7 @@
                 <strong>Ricevi notifiche di nuovi messaggi</strong><br>
                 <small> <a href="#">Attiva notifiche desktop</a></small>
               </div>
-              
+
             <!--chat search bar-->
             </div>
             <div class="col-12 py-2" id="search">
@@ -73,7 +73,7 @@
         <!-- end left-sidebar -->
 
         <!--chat box on the right-->
-        <div class="col-12 col-md-8 chat-box">
+        <div class="col-12 col-md-8 chat-box d-md-block" :class="{'d-none': !showChat}">
           <div class="row h-100 flex-column flex-nowrap">
             <div class="col-12 col-header d-flex align-items-center justify-content-between py-2 ">
               <div class="d-flex">
@@ -84,7 +84,7 @@
                 </div>
               </div>
               <div class="icons">
-                <i class="fa-solid fa-arrow-left me-3" style="cursor: pointer;"></i>
+                <i class="fa-solid fa-arrow-left me-3" style="cursor: pointer;" @click="showChat = false"></i>
                 <i class="fa-solid fa-magnifying-glass me-3"></i>
                 <i class="fa-solid fa-link me-3"></i>
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -102,7 +102,7 @@
             </div>
             <div class="col-12 col-header py-2 d-flex align-items-center">
               <i class="fa-regular fa-face-smile me-3" style="cursor: pointer;"></i>
-              <input type="text" class="form-control me-3" placeholder="Scrivi un messaggio" v-model="message" @keyup.enter = "newMessage">
+              <input type="text" class="form-control me-3" placeholder="Scrivi un messaggio" v-model.trim="message" @keyup.enter = "newMessage">
               <i class="fa-regular fa-paper-plane me-3" style="cursor: pointer;"></i>
               <i class="fa-solid fa-microphone " style="cursor: pointer;"></i>
             </div>
