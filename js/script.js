@@ -57,6 +57,9 @@ createApp({
       }
     },
     newMessage(){
+      if (this.message.trim() === '') {
+      return;
+      }
       const randomIndex = Math.floor(Math.random() * answers.length);
       const randomAnswer = answers[randomIndex];
       const newmsg = {
