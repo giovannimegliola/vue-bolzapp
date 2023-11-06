@@ -30,7 +30,7 @@
               <div class="icons">
                 <i class="fa-solid fa-circle-notch me-3"></i>
                 <i class="fa-solid fa-message me-3"></i>
-                <i class="fa-solid fa-ellipsis-vertical "></i>                
+                <i class="fa-solid fa-ellipsis-vertical me-3"></i>           
               </div>
             </div>
             <div class="col-12 d-flex notification py-2">
@@ -91,7 +91,7 @@
               </div>
             </div>
             <div class="col-12 flex-grow-1 overflow-y-auto h0">
-              <div class="d-flex py-3" v-for=" (msg, index) in activeContact.messages" :key="index">
+              <div class="d-flex py-3" ref="messages" v-for=" (msg, index) in activeContact.messages" :key="index">
                 <div class="msg" :class="msg.status" @click="toggleDeleteMenu(activeContact, msg)">{{msg.message}}
                   <i class="fa-solid fa-angle-down arrow-icon" ></i>
                   <div class="delete-menu" v-if="msg.showDeleteMenu">

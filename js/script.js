@@ -68,6 +68,7 @@ createApp({
         status: 'sent'
       }
       this.activeContact.messages.push(newmsg);
+      
       this.message = '';
       setTimeout(()=>{
         const answerMessage = {
@@ -76,7 +77,12 @@ createApp({
           status: 'received'
         }
         this.activeContact.messages.push(answerMessage);
-      }, 1000)
+      }, 1000);
+      this.$nextTick(() =>{
+        this.$refs.messages [this.$refs.messages.length -1].scrollIntoView({behavior:'smooth'});
+
+      });
+      
     },
     toggleDeleteMenu(contact, msg) {
       msg.showDeleteMenu = !msg.showDeleteMenu;
@@ -84,6 +90,7 @@ createApp({
     deleteMessage(contact, msgIndex) {
       contact.messages.splice(msgIndex, 1);
     }
+    
   },
 
   computed:{
@@ -103,5 +110,6 @@ createApp({
         contact.name.toLowerCase().includes(this.searchText.toLowerCase())
       );
     }
-  }
+  },
+
 }).mount('#app');

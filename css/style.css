@@ -62,6 +62,7 @@ body{
 
 .icons{
   color: var(--color-light-icons);
+  cursor: pointer;
 } 
 
 .notification{
@@ -124,3 +125,14 @@ small a {
 .msg:hover .arrow-icon {
   display: inline-block;
 }
+
+
+
+
+
+
+
+
+
+
+
