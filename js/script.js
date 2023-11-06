@@ -68,8 +68,10 @@ createApp({
         status: 'sent'
       }
       this.activeContact.messages.push(newmsg);
-      
       this.message = '';
+      this.scrollToBottom();
+
+
       setTimeout(()=>{
         const answerMessage = {
           date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
@@ -77,11 +79,9 @@ createApp({
           status: 'received'
         }
         this.activeContact.messages.push(answerMessage);
+        this.scrollToBottom();
       }, 1000);
-      this.$nextTick(() =>{
-        this.$refs.messages [this.$refs.messages.length -1].scrollIntoView({behavior:'smooth'});
-
-      });
+      
       
     },
     toggleDeleteMenu(contact, msg) {
@@ -89,7 +89,15 @@ createApp({
     },
     deleteMessage(contact, msgIndex) {
       contact.messages.splice(msgIndex, 1);
-    }
+    },
+
+    scrollToBottom() {
+      this.$nextTick(() =>{
+        this.$refs.messages [this.$refs.messages.length -1].scrollIntoView({behavior:'smooth'});
+      
+      });
+    
+  },
     
   },
 
@@ -113,3 +121,6 @@ createApp({
   },
 
 }).mount('#app');
+
+
+
